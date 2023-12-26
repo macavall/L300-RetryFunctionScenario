@@ -6,6 +6,10 @@
   - Requests to `/api/http2` we will receive the **Process ID Number** of the current dotnet.exe process running the Function App Custom Code for processing the request
 
 
+---
+
+# Storage Static Site Configuration
+
 In the [HTMLDoc](https://github.com/macavall/L300-RetryFunctionScenario/tree/master/HtmlDoc) we will find the following JavaScript code for running in a Static Site hosted on the Storage Account
 
 **Enable** the Static Site feature and upload the content of the [HTMLDoc](https://github.com/macavall/L300-RetryFunctionScenario/tree/master/HtmlDoc) and upload using the same file name `RetryJavaScript.html` to the Storage Static Site
