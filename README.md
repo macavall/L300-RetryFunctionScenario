@@ -25,5 +25,8 @@ Example of the **CORS** Configuration for Function App
 
 ![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/571f85a6-478d-4d23-bfe0-6fbccbc40e4d)
 
+## Resulting site will look like this
+
+![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/de79291e-7eb0-429e-9697-6da4fd36ed32)
 
 
