@@ -8,4 +8,5 @@
 
 In the [HTMLDoc](https://github.com/macavall/L300-RetryFunctionScenario/tree/master/HtmlDoc) we will find the following JavaScript code for running in a Static Site hosted on the Storage Account
 
+![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/3ff85191-894c-4766-b74f-6557d7fc50d9)
 
