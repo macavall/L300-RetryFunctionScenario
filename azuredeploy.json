@@ -113,6 +113,7 @@
                             "https://ms.portal.azure.com"
                         ]
                     },
+                    "functionAppScaleLimit": 2,
                     "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
                     "ftpsState": "[parameters('ftpsState')]",
                     "netFrameworkVersion": "[parameters('netFrameworkVersion')]"
