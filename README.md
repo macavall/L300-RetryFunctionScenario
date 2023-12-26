@@ -32,5 +32,15 @@
 - Open the F12 Developer Tools in the Browser loading the Storage Static Site
   - This is how to open the F12 Developer Tools in Microsoft Edge (_You can also press F12 on the Keyboard to open the Developer Tools_)
 
+![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/21ae9b62-79f5-4c4e-a564-d0a55af4d314)
 
+- Open the **Networking** blade to see the Network Requests in action
 
+![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/35318b0e-335e-42a7-88de-05f7b56ea671)
+
+---
+
+## Reproduction Steps
+
+1. Once the Function App is deployed, open the HTML Static Site and attempt running the request and confirm the Function App is responding as desired
+2. Now run the request to `/api/http2` as this will have the Function App start to respond with 503 Http Statuses (`Service Unavailable`)
