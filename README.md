@@ -10,7 +10,6 @@ In the [HTMLDoc](https://github.com/macavall/L300-RetryFunctionScenario/tree/mas
 
 **Enable** the Static Site feature and upload the content of the [HTMLDoc](https://github.com/macavall/L300-RetryFunctionScenario/tree/master/HtmlDoc) and upload using the same file name `RetryJavaScript.html` to the Storage Static Site
 
-Ensure to take the host name
-
 ![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/3ff85191-894c-4766-b74f-6557d7fc50d9)
 
+**Copy the Primary Endpoint** and add to the Function App **CORS** configurations
