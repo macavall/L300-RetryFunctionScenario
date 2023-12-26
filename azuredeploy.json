@@ -106,10 +106,6 @@
                         {
                             "name": "WEBSITE_RUN_FROM_PACKAGE",
                             "value": "https://raw.githubusercontent.com/macavall/L300-Durable/master/L300Durable.zip"
-                        },
-                        {
-                            "name": "delay",
-                            "value": "30000"
                         }
                     ],
                     "cors": {
