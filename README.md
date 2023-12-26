@@ -29,4 +29,8 @@
 
 ![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/de79291e-7eb0-429e-9697-6da4fd36ed32)
 
+- Open the F12 Developer Tools in the Browser loading the Storage Static Site
+  - This is how to open the F12 Developer Tools in Microsoft Edge (_You can also press F12 on the Keyboard to open the Developer Tools_)
+
+
 
