@@ -1,8 +1,9 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
 
-internal class Program
+public class Program
 {
     private static void Main(string[] args)
     {
@@ -12,6 +13,7 @@ internal class Program
         {
             services.AddApplicationInsightsTelemetryWorkerService();
             services.ConfigureFunctionsApplicationInsights();
+            services.AddHttpClient();
         })
         .Build();
 
