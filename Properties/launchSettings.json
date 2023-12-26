@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "TestIso7FA": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7151",
+      "launchBrowser": false
+    }
+  }
+}
