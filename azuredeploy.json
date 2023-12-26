@@ -105,7 +105,7 @@
                         },
                         {
                             "name": "WEBSITE_RUN_FROM_PACKAGE",
-                            "value": "https://raw.githubusercontent.com/macavall/L300-Durable/master/L300Durable.zip"
+                            "value": "https://raw.githubusercontent.com/macavall/L300-RetryFunctionScenario/master/Final/publish.zip"
                         }
                     ],
                     "cors": {
