@@ -29,6 +29,8 @@ namespace TestIso7FA
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
+            ServiceStatus.Running = false;
+
             StartHighThreadCount();
 
             response.WriteString(Process.GetCurrentProcess().Id.ToString());

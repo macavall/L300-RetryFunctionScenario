@@ -14,14 +14,16 @@ namespace TestIso7FA
     {
         private readonly ILogger _logger;
         private readonly IHttpClientFactory _httpClientFactory;
-        private static string endpoint = "https://" + Environment.GetEnvironmentVariable("WEBSITE_HOSTNAME") + "/api/http2";
+        private readonly IServiceUpdater _serviceUpdater;
+        private static string endpoint = "https://" + Environment.GetEnvironmentVariable("WEBSITE_HOSTNAME") + "/api/http2"; // "http://localhost:7151/api/http2";
         private static bool created = true;
         private static SemaphoreSlim semaphore = new SemaphoreSlim(30); // Limit to 5 concurrent requests
 
-        public http2(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory)
+        public http2(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory, IServiceUpdater serviceUpdater)
         {
             _logger = loggerFactory.CreateLogger<http2>();
             _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+            _serviceUpdater = serviceUpdater;
         }
 
         [Function("http2")]
@@ -31,8 +33,17 @@ namespace TestIso7FA
 
             _logger.LogInformation(endpoint);
 
+            string result = req.Query["restart"];
+
+            if (result == "restart")
+            {
+                created = true;
+                _serviceUpdater.SetIsRunning(true);
+            }
+
             if (created)
             {
+                _serviceUpdater.SetIsRunning(true);
                 created = false;
                 _ = Task.Factory.StartNew(async () =>
                 {
@@ -77,6 +88,11 @@ namespace TestIso7FA
 
                         while (!requestSuccessful && retryCount < 100)
                         {
+                            if (!ServiceStatus.Running)
+                            {
+                                break;
+                            }
+
                             try
                             {
                                 HttpResponseMessage response = await httpClient.GetAsync(endpoint, cancellationToken);
