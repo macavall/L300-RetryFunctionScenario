@@ -19,6 +19,7 @@ In the [HTMLDoc](https://github.com/macavall/L300-RetryFunctionScenario/tree/mas
 Example of the **CORS** Configuration for Function App
 - This allows the requests from the Storage Static Site Origin to be accepted by the Function App
 
-![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/54cae761-9c23-41aa-b448-43a9ebe7a98f)
+![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/571f85a6-478d-4d23-bfe0-6fbccbc40e4d)
+
 
 
