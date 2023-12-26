@@ -28,10 +28,7 @@ namespace TestIso7FA
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
-            if (Environment.GetEnvironmentVariable("localrun") == "true")
-            {
-                endpoint = "http://localhost:7151/api/http2";
-            }
+
             _logger.LogInformation(endpoint);
 
             if (created)
@@ -56,8 +53,6 @@ namespace TestIso7FA
                     //created = true;
                 });
             }
-
-
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
@@ -119,72 +114,5 @@ namespace TestIso7FA
                 semaphore.Release(); // Release the slot
             }
         }
-
-        //static async Task SendRequestsAsync(string endpoint, CancellationToken cancellationToken, IHttpClientFactory clientFactory)
-        //{
-        //    await semaphore.WaitAsync(); // Wait for an open slot
-
-        //    try
-        //    {
-        //        using (var httpClient = clientFactory.CreateClient())
-        //        {
-        //            while (!cancellationToken.IsCancellationRequested)
-        //            {
-        //                try
-        //                {
-        //                    HttpResponseMessage response = await httpClient.GetAsync(endpoint, cancellationToken);
-
-        //                    if (response.IsSuccessStatusCode)
-        //                    {
-        //                        Console.WriteLine($"Request successful. Thread: {Thread.CurrentThread.ManagedThreadId}");
-        //                    }
-        //                    else
-        //                    {
-        //                        Console.WriteLine($"Request failed. Thread: {Thread.CurrentThread.ManagedThreadId}, Status Code: {response.StatusCode}");
-        //                    }
-        //                }
-        //                catch (HttpRequestException ex)
-        //                {
-        //                    Console.WriteLine($"Request failed. Thread: {Thread.CurrentThread.ManagedThreadId}, Exception: {ex.Message}");
-        //                }
-
-        //                await Task.Delay(500); // Delay between requests (1 second)
-        //            }
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        semaphore.Release(); // Release the slot
-        //    }
-
-        //    //await semaphore.WaitAsync(); // Wait for an open slot
-
-        //    //using (var httpClient = clientFactory.CreateClient()) //var httpClient = new HttpClient())
-        //    //{
-        //    //    while (!cancellationToken.IsCancellationRequested)
-        //    //    {
-        //    //        try
-        //    //        {
-        //    //            HttpResponseMessage response = await httpClient.GetAsync(endpoint, cancellationToken);
-
-        //    //            if (response.IsSuccessStatusCode)
-        //    //            {
-        //    //                Console.WriteLine($"Request successful. Thread: {Thread.CurrentThread.ManagedThreadId}");
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                Console.WriteLine($"Request failed. Thread: {Thread.CurrentThread.ManagedThreadId}, Status Code: {response.StatusCode}");
-        //    //            }
-        //    //        }
-        //    //        catch (HttpRequestException ex)
-        //    //        {
-        //    //            Console.WriteLine($"Request failed. Thread: {Thread.CurrentThread.ManagedThreadId}, Exception: {ex.Message}");
-        //    //        }
-
-        //    //        await Task.Delay(10); // Delay between requests (1 second)
-        //    //    }
-        //    //}
-        //}
-
     }
 }
