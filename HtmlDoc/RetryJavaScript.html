@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="myButton">Click me</button>
+
+<script>
+document.getElementById("myButton").addEventListener("click", function() {
+    const url = "https://suspendfa562fa.azurewebsites.net/api/http2";
+    const maxRetries = 100;
+    let retries = 0;
+
+    function sendRequest() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+
+        xhr.onload = function () {
+            if (xhr.status >= 500) {
+                if (retries < maxRetries) {
+                    retries++;
+                    console.log(`Attempt ${retries} failed. Retrying in 5 seconds...`);
+                    setTimeout(sendRequest, 3000); // Wait 5 seconds before retrying
+                } else {
+                    console.log('All attempts failed.');
+                }
+            }
+        };
+
+        xhr.onerror = function () {
+            console.log('Request failed');
+        };
+
+        xhr.send(null);
+    }
+
+    sendRequest();
+});
+</script>
+
+</body>
+</html>
