@@ -44,6 +44,6 @@
 
 1. Once the Function App is deployed, open the HTML Static Site and attempt running the request and confirm the Function App is responding as desired
 
-Deploy the Scenario here: [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fmacavall%2FL300-RetryFunctionScenario%2Fblob%2Fmaster%2Fazuredeploy.json)
+Deploy the Scenario here: [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmacavall%2FL300-RetryFunctionScenario%2Fmaster%2Fazuredeploy.json)
 
 3. Now run the request to `/api/http2` as this will have the Function App start to respond with 503 Http Statuses (`Service Unavailable`)
