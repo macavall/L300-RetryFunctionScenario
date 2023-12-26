@@ -13,3 +13,12 @@ In the [HTMLDoc](https://github.com/macavall/L300-RetryFunctionScenario/tree/mas
 ![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/3ff85191-894c-4766-b74f-6557d7fc50d9)
 
 **Copy the Primary Endpoint** and add to the Function App **CORS** configurations
+
+![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/a6a8f8f0-e58d-484e-8bb7-15278bf8c46a)
+
+Example of the **CORS** Configuration for Function App
+- This allows the requests from the Storage Static Site Origin to be accepted by the Function App
+
+![image](https://github.com/macavall/L300-RetryFunctionScenario/assets/43223084/54cae761-9c23-41aa-b448-43a9ebe7a98f)
+
+
