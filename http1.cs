@@ -15,10 +15,12 @@ namespace TestIso7FA
         private readonly ILogger _logger;
         private static readonly ManualResetEventSlim eventSlim = new ManualResetEventSlim(false);
         private static int threadCount = 600;
+        private readonly IServiceUpdater _serviceUpdater;
 
-        public http1(ILoggerFactory loggerFactory)
+        public http1(ILoggerFactory loggerFactory, IServiceUpdater serviceUpdater)
         {
             _logger = loggerFactory.CreateLogger<http1>();
+            _serviceUpdater = serviceUpdater;
         }
 
         [Function("http1")]
@@ -26,12 +28,19 @@ namespace TestIso7FA
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
+            _serviceUpdater.CancelHttpSender();
+
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
             ServiceStatus.Running = false;
 
-            StartHighThreadCount();
+
+            if (Environment.GetEnvironmentVariable("localrun") != "true")
+            {
+                StartHighThreadCount();
+            }
+            
 
             response.WriteString(Process.GetCurrentProcess().Id.ToString());
 
