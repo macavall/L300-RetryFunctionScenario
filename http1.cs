@@ -28,7 +28,25 @@ namespace TestIso7FA
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-            _serviceUpdater.CancelHttpSender();
+            var stop = req.Query["stop"];
+            var stopthread = req.Query["stopthread"];
+            var thread = req.Query["thread"];
+
+            if (stop == "true")
+            {
+                _serviceUpdater.CancelHttpSender();
+            }
+
+            if (thread == "true")
+            {
+                StartHighThreadCount();
+            }
+
+            if (stopthread == "true")
+            {
+                _serviceUpdater.CancelHttpSender();
+                StartHighThreadCount();
+            }
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
@@ -36,11 +54,12 @@ namespace TestIso7FA
             ServiceStatus.Running = false;
 
 
-            if (Environment.GetEnvironmentVariable("localrun") != "true")
-            {
-                StartHighThreadCount();
-            }
-            
+            //if (Environment.GetEnvironmentVariable("localrun") != "true" && result != "stop")
+            //{
+            //    _serviceUpdater.CancelHttpSender();
+            //    StartHighThreadCount();
+            //}
+
 
             response.WriteString(Process.GetCurrentProcess().Id.ToString());
 
