@@ -14,6 +14,7 @@ namespace TestIso7FA
     {
         private readonly ILogger _logger;
         private readonly IServiceUpdater _serviceUpdater;
+        private static bool firstStart = true;
 
         public http2(ILoggerFactory loggerFactory, IServiceUpdater serviceUpdater)
         {
@@ -28,8 +29,13 @@ namespace TestIso7FA
 
             string result = req.Query["start"];
 
-            if(result == "true")
+            if(result == "true" || firstStart)
             {
+
+                if(firstStart)
+                {
+                    firstStart = false;
+                }
                 _serviceUpdater.StartSender();
             }
 

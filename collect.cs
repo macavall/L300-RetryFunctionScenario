@@ -6,26 +6,21 @@ using Microsoft.Extensions.Logging;
 
 namespace TestIso7FA
 {
-    public class http3
+    public class collect
     {
         private readonly ILogger _logger;
-        private readonly MyBeforeStartupDependency myBeforeStartupDepdendency;
 
-        public http3(ILoggerFactory loggerFactory, MyBeforeStartupDependency _myBeforeStartupDependency)
+        public collect(ILoggerFactory loggerFactory)
         {
-            _logger = loggerFactory.CreateLogger<http3>();
-            myBeforeStartupDepdendency = _myBeforeStartupDependency;
+            _logger = loggerFactory.CreateLogger<collect>();
         }
 
-        [Function("http3")]
+        [Function("collect")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-            var mb = req.Query["mb"];
-
-            myBeforeStartupDepdendency.ShowGuid(Convert.ToInt32(mb));
-            //myBeforeStartupDepdendency.Dispose();
+            GC.Collect();
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
